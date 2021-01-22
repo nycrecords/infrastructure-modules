@@ -1,0 +1,3 @@
+[submodule "azurerm_virtual_machine"]
+	path = azurerm_virtual_machine
+	url = https://github.com/nycrecords/terraform-azurerm-compute
