@@ -249,3 +249,13 @@ variable "os_profile_secrets" {
   type        = list(map(string))
   default     = []
 }
+
+variable "lb_name" {
+  description = ""
+  type        =
+  default     =
+}
+
+variable "backend_address_pool_name" {
+  
+}
