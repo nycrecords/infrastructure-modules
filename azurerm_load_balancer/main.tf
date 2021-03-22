@@ -8,10 +8,6 @@ data "azurerm_subnet" "subnet" {
   resource_group_name  = data.azurerm_resource_group.rg.name
 }
 
-output "subnet_id" {
-  value = data.azurerm_subnet.example.id
-}
-
 resource "azurerm_lb" "lb" {
   name                = "${var.prefix}-lb"
   resource_group_name = data.azurerm_resource_group.rg.name
