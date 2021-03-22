@@ -267,3 +267,20 @@ resource "azurerm_network_interface" "vm" {
 
   tags = var.tags
 }
+
+data "azurerm_lb" "lb" {
+  name                = var.lb_name
+  resource_group_name = data.azurerm_resource_group.vm.name
+}
+
+data "azurerm_lb_backend_address_pool" "backend_address_pool" {
+  loadbalancer_id     = data.azurerm_lb.lb.id
+  name                = var.backend_address_pool_name
+}
+
+resource "azurerm_network_interface_backend_address_pool_association" "backend_address_pool_association" {
+  count                   = var.nb_instances
+  network_interface_id    = "azurerm_network_interface.vm[${count.index}].id"
+  ip_configuration_name   = "${var.vm_hostname}-ip-${count.index}"
+  backend_address_pool_id = data.azurerm_lb_backend_address_pool.backend_address_pool.id
+}
