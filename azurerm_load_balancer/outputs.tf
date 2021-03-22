@@ -1,11 +1,11 @@
 output "azurerm_resource_group_tags" {
   description = "the tags provided for the resource group"
-  value       = data.azurerm_resource_group.lb.tags
+  value       = data.azurerm_resource_group.rg.tags
 }
 
 output "azurerm_resource_group_name" {
   description = "name of the resource group provisioned"
-  value       = data.azurerm_resource_group.lb.name
+  value       = data.azurerm_resource_group.rg.name
 }
 
 output "azurerm_lb_id" {
@@ -26,16 +26,6 @@ output "azurerm_lb_probe_ids" {
 output "azurerm_lb_nat_rule_ids" {
   description = "the ids for the azurerm_lb_nat_rule resources"
   value       = azurerm_lb_nat_rule.lb.*.id
-}
-
-output "azurerm_public_ip_id" {
-  description = "the id for the azurerm_lb_public_ip resource"
-  value       = azurerm_public_ip.lb.*.id
-}
-
-output "azurerm_public_ip_address" {
-  description = "the ip address for the azurerm_lb_public_ip resource"
-  value       = azurerm_public_ip.lb.*.ip_address
 }
 
 output "azurerm_lb_backend_address_pool_id" {

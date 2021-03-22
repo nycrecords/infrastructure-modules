@@ -11,9 +11,9 @@ resource "azurerm_lb" "lb" {
 
   frontend_ip_configuration {
     name                          = var.frontend_name
-    subnet_id                     = var.fronted_subnet_id
+    subnet_id                     = var.frontend_subnet_id
     private_ip_address            = var.frontend_private_ip_address
-    private_ip_address_allocation = var.frontend_ip_address_allocation
+    private_ip_address_allocation = var.frontend_private_ip_address_allocation
   }
 }
 
