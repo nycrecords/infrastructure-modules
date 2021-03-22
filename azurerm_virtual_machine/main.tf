@@ -269,11 +269,13 @@ resource "azurerm_network_interface" "vm" {
 }
 
 data "azurerm_lb" "lb" {
+  count               = var.use_lb ? 1 : 0
   name                = var.lb_name
   resource_group_name = data.azurerm_resource_group.vm.name
 }
 
 data "azurerm_lb_backend_address_pool" "backend_address_pool" {
+  count               = var.use_lb ? 1 : 0
   loadbalancer_id     = data.azurerm_lb.lb.id
   name                = var.backend_address_pool_name
 }
