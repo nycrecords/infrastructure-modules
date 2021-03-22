@@ -280,7 +280,7 @@ data "azurerm_lb_backend_address_pool" "backend_address_pool" {
 
 resource "azurerm_network_interface_backend_address_pool_association" "backend_address_pool_association" {
   count                   = var.nb_instances
-  network_interface_id    = "azurerm_network_interface.vm[${count.index}].id"
+  network_interface_id    = element(azurerm_network_interface.vm.*.id, count.index)
   ip_configuration_name   = "${var.vm_hostname}-ip-${count.index}"
   backend_address_pool_id = data.azurerm_lb_backend_address_pool.backend_address_pool.id
 }
