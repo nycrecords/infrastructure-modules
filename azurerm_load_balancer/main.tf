@@ -2,6 +2,16 @@ data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
 
+data "azurerm_subnet" "subnet" {
+  name                 = var.subnet_name
+  virtual_network_name = var.vnet_name
+  resource_group_name  = data.azurerm_resource_group.rg.name
+}
+
+output "subnet_id" {
+  value = data.azurerm_subnet.example.id
+}
+
 resource "azurerm_lb" "lb" {
   name                = "${var.prefix}-lb"
   resource_group_name = data.azurerm_resource_group.rg.name
@@ -11,7 +21,7 @@ resource "azurerm_lb" "lb" {
 
   frontend_ip_configuration {
     name                          = var.frontend_name
-    subnet_id                     = var.frontend_subnet_id
+    subnet_id                     = data.azurerm_subnet.subnet.id
     private_ip_address            = var.frontend_private_ip_address
     private_ip_address_allocation = var.frontend_private_ip_address_allocation
   }

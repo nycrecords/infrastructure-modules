@@ -9,6 +9,16 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "vnet_name" {
+  description = "(Required) The name of the virtual network where the load balancer resources are deployed."
+  type        = string
+}
+
+variable "subnet_name" {
+  description = "(Required) The name of the subnet where the load balancer resources are deployed."
+  type        = string
+}
+
 variable "prefix" {
   description = "(Required) Default prefix to use with your resource names."
   type        = string
@@ -57,12 +67,6 @@ variable "tags" {
   default = {
     source = "terraform"
   }
-}
-
-variable "frontend_subnet_id" {
-  description = "(Optional) Frontend subnet id to use when in private mode"
-  type        = string
-  default     = ""
 }
 
 variable "frontend_private_ip_address" {
