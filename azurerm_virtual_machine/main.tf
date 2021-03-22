@@ -276,7 +276,7 @@ data "azurerm_lb" "lb" {
 
 data "azurerm_lb_backend_address_pool" "backend_address_pool" {
   count               = var.use_lb ? 1 : 0
-  loadbalancer_id     = "${element(data.azurerm_lb.*.id, count.index)}"
+  loadbalancer_id     = element(data.azurerm_lb.*.id, count.index)
   name                = var.backend_address_pool_name
 }
 
@@ -284,5 +284,5 @@ resource "azurerm_network_interface_backend_address_pool_association" "backend_a
   count                   = var.use_lb ? var.nb_instances : 0
   network_interface_id    = element(azurerm_network_interface.vm.*.id, count.index)
   ip_configuration_name   = "${var.vm_hostname}-ip-${count.index}"
-  backend_address_pool_id = "${element(data.azurerm_lb_backend_address_pool.*.id, count.index)}"
+  backend_address_pool_id = element(data.azurerm_lb_backend_address_pool.backend_address_pool.id, 0)
 }
