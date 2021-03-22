@@ -251,11 +251,19 @@ variable "os_profile_secrets" {
 }
 
 variable "lb_name" {
-  description = "(Required) Name of the load balancer that the app will be connected to."
+  description = "(Required) Whether app should be setup behind a load balancer."
+  type        = Boolean
+  default     = false
+}
+
+variable "lb_name" {
+  description = "(Optional) Name of the load balancer that the app will be connected to."
   type        = string
+  default     = ""
 }
 
 variable "backend_address_pool_name" {
-  description = "(Required) Name of the load balancer that the app will be connected to."
+  description = "(Optional) Name of the load balancer that the app will be connected to."
   type        = string
+  default     = ""
 }
