@@ -14,6 +14,11 @@ variable "vnet_name" {
   type        = string
 }
 
+variable "vnet_resource_group" {
+  description = "(Required) The name of the resource group where the virtual network for the load balancer resources exists."
+  type        = string
+}
+
 variable "frontend_subnet_name" {
   description = "(Required) The name of the subnet where the load balancer resources are deployed."
   type        = string
