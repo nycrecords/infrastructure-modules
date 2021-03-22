@@ -14,7 +14,7 @@ variable "vnet_name" {
   type        = string
 }
 
-variable "subnet_name" {
+variable "frontend_subnet_name" {
   description = "(Required) The name of the subnet where the load balancer resources are deployed."
   type        = string
 }
