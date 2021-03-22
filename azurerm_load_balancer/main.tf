@@ -49,7 +49,7 @@ resource "azurerm_lb_probe" "lb" {
 resource "azurerm_lb_rule" "lb" {
   count                          = length(var.lb_port)
   name                           = element(keys(var.lb_port), count.index)
-  resource_group_name            = data.azurerm_resource_group.lb.name
+  resource_group_name            = data.azurerm_resource_group.rg.name
   loadbalancer_id                = azurerm_lb.lb.id
   protocol                       = element(var.lb_port[element(keys(var.lb_port), count.index)], 1)
   frontend_port                  = element(var.lb_port[element(keys(var.lb_port), count.index)], 0)
