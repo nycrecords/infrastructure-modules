@@ -256,14 +256,14 @@ variable "use_lb" {
   default     = false
 }
 
+
 variable "lb_name" {
-  description = "(Optional) Name of the load balancer that the app will be connected to."
+  description = "(Required) Name of the load balancer that the app will be connected to."
   type        = string
-  default     = ""
 }
 
 variable "backend_address_pool_name" {
   description = "(Optional) Name of the load balancer that the app will be connected to."
   type        = string
-  default     = ""
 }
+

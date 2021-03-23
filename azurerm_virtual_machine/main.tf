@@ -267,22 +267,14 @@ resource "azurerm_network_interface" "vm" {
 
   tags = var.tags
 }
+module "vm_lb_backend_address_pool_association" {
+  source  = "github.com/nycrecords/infrastructure-modules.git//azurerm_vm_lb_backend_address_pool_association"
+  count = var.use_load_balancer? var.nb_instances : 0
 
-data "azurerm_lb" "lb" {
-  count               = var.use_lb ? 1 : 0
-  name                = var.lb_name
+  nic_name = "${var.vm_hostname}-nic-${count.index}"
   resource_group_name = data.azurerm_resource_group.vm.name
-}
+  ip_configuration_name = "${var.vm_hostname}-nic-${count.index}"
+  lb_name = var.lb_name
+  backend_address_pool_name = var.backend_address_pool_name
 
-data "azurerm_lb_backend_address_pool" "backend_address_pool" {
-  count               = var.use_lb ? 1 : 0
-  loadbalancer_id     = element(data.azurerm_lb.lb.id, 0)
-  name                = var.backend_address_pool_name
-}
-
-resource "azurerm_network_interface_backend_address_pool_association" "backend_address_pool_association" {
-  count                   = var.use_lb ? var.nb_instances : 0
-  network_interface_id    = element(azurerm_network_interface.vm.*.id, count.index)
-  ip_configuration_name   = "${var.vm_hostname}-ip-${count.index}"
-  backend_address_pool_id = element(data.azurerm_lb_backend_address_pool.backend_address_pool.id, 0)
 }
