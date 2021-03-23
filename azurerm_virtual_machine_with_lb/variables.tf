@@ -249,3 +249,21 @@ variable "os_profile_secrets" {
   type        = list(map(string))
   default     = []
 }
+
+variable "use_load_balancer" {
+  description = "(Required) Whether app should be setup behind a load balancer."
+  type        = bool
+  default     = false
+}
+
+
+variable "load_balancer_name" {
+  description = "(Required) Name of the load balancer that the app will be connected to."
+  type        = string
+}
+
+variable "backend_address_pool_name" {
+  description = "(Optional) Name of the load balancer that the app will be connected to."
+  type        = string
+}
+
