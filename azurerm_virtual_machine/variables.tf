@@ -257,7 +257,7 @@ variable "use_load_balancer" {
 }
 
 
-variable "lb_name" {
+variable "load_balancer_name" {
   description = "(Required) Name of the load balancer that the app will be connected to."
   type        = string
 }

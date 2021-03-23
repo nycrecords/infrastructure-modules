@@ -271,10 +271,10 @@ module "vm_lb_backend_address_pool_association" {
   source  = "github.com/nycrecords/infrastructure-modules.git//azurerm_vm_lb_backend_address_pool_association"
   count = var.use_load_balancer ? var.nb_instances : 0
 
-  nic_name = "${var.vm_hostname}-nic-${count.index}"
+  network_interface_name = "${var.vm_hostname}-nic-${count.index}"
   resource_group_name = data.azurerm_resource_group.vm.name
   ip_configuration_name = "${var.vm_hostname}-nic-${count.index}"
-  lb_name = var.lb_name
+  load_balancer_name = var.lb_name
   backend_address_pool_name = var.backend_address_pool_name
 
 }

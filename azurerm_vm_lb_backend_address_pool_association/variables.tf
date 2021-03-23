@@ -1,4 +1,4 @@
-variable "nic_name" {
+variable "network_interface_name" {
     description = "(Required) Name of the network interface to connect to the load balancer"
     type = string
 }
@@ -13,7 +13,7 @@ variable "ip_configuration_name" {
     type = string
 }
 
-variable "lb_name" {
+variable "load_balancer_name" {
   description = "(Required) Name of the load balancer that the app will be connected to."
   type        = string
 }
