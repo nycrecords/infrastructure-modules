@@ -250,7 +250,7 @@ variable "os_profile_secrets" {
   default     = []
 }
 
-variable "use_lb" {
+variable "use_load_balancer" {
   description = "(Required) Whether app should be setup behind a load balancer."
   type        = bool
   default     = false

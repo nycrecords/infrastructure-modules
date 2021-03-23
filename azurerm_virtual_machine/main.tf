@@ -269,7 +269,7 @@ resource "azurerm_network_interface" "vm" {
 }
 module "vm_lb_backend_address_pool_association" {
   source  = "github.com/nycrecords/infrastructure-modules.git//azurerm_vm_lb_backend_address_pool_association"
-  count = var.use_load_balancer? var.nb_instances : 0
+  count = var.use_load_balancer ? var.nb_instances : 0
 
   nic_name = "${var.vm_hostname}-nic-${count.index}"
   resource_group_name = data.azurerm_resource_group.vm.name
