@@ -276,7 +276,7 @@ data "azurerm_lb" "lb" {
 
 data "azurerm_lb_backend_address_pool" "backend_address_pool" {
   count               = var.use_lb ? 1 : 0
-  loadbalancer_id     = element(data.azurerm_lb.*.id, 0)
+  loadbalancer_id     = element(data.azurerm_lb.lb.id, 0)
   name                = var.backend_address_pool_name
 }
 
