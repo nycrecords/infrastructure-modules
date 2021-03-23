@@ -1,6 +1,6 @@
 data "azurerm_network_interface" "network_interface" {
-    name = var.network_interface_name
-    resource_group_name = var.resource_group_name
+  name                = var.network_interface_name
+  resource_group_name = var.resource_group_name
 }
 
 data "azurerm_lb" "load_balancer" {
@@ -9,8 +9,8 @@ data "azurerm_lb" "load_balancer" {
 }
 
 data "azurerm_lb_backend_address_pool" "backend_address_pool" {
-  loadbalancer_id     = data.azurerm_lb.load_balancer.id
-  name                = var.backend_address_pool_name
+  loadbalancer_id = data.azurerm_lb.load_balancer.id
+  name            = var.backend_address_pool_name
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "backend_address_pool_association" {
