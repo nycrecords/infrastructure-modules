@@ -273,7 +273,7 @@ module "vm_lb_backend_address_pool_association" {
 
   network_interface_name    = "${var.vm_hostname}-nic-${count.index}"
   resource_group_name       = data.azurerm_resource_group.vm.name
-  ip_configuration_name     = "${var.vm_hostname}-nic-${count.index}"
+  ip_configuration_name     = "${var.vm_hostname}-ip-${count.index}"
   load_balancer_name        = var.load_balancer_name
   backend_address_pool_name = var.backend_address_pool_name
 }
