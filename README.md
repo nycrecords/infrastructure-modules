@@ -1,4 +1,5 @@
-# Infrastructure Terraform Modules
+Infrastructure Terraform Modules
+================================
 
 This repository contains the Terraform modules used to provision and maintain the NYC Department of Records cloud infrastructure. This should be considered a library of modules to be called from the Infrastructure Live Repositories:
 
@@ -7,7 +8,8 @@ This repository contains the Terraform modules used to provision and maintain th
 - [Azure](https://github.com/nycrecords/azu-doris-infrastructure-live)
 
 
-## What tools should I know to work in this repo?
+What tools should I know to work in this repo?
+----------------------------------------------
 
 - [Terraform][4]
 - [Terragrunt][5]
@@ -19,6 +21,7 @@ This repository contains the Terraform modules used to provision and maintain th
 [4]: https://www.terraform.io/ "Terraform"
 [5]: https://terragrunt.gruntwork.io/ "Terragrunt"
 
-## How to contribute
+How to contribute
+-----------------
 
 Contributions are welcome. Feel free to open issues and submit a pull request any time.
