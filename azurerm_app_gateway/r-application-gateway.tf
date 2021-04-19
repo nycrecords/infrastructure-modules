@@ -20,7 +20,7 @@ resource "azurerm_application_gateway" "app_gateway" {
 
   frontend_ip_configuration {
     name                 = local.frontend_ip_configuration_name
-    public_ip_address_id = azurerm_public_ip.ip.id
+    private_ip_address = var.private_ip_address
   }
 
   dynamic "frontend_ip_configuration" {
