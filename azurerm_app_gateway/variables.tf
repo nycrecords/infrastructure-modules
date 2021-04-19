@@ -38,38 +38,6 @@ variable "extra_tags" {
   default     = {}
 }
 
-# PUBLIC IP
-
-variable "ip_name" {
-  description = "Public IP name."
-  type        = string
-  default     = ""
-}
-
-variable "ip_tags" {
-  description = "Public IP tags."
-  type        = map(string)
-  default     = {}
-}
-
-variable "ip_label" {
-  description = "Domain name label for public IP."
-  type        = string
-  default     = ""
-}
-
-variable "ip_sku" {
-  description = "SKU for the public IP. Warning, can only be `Standard` for the moment."
-  type        = string
-  default     = "Standard"
-}
-
-variable "ip_allocation_method" {
-  description = "Allocation method for the public IP. Warning, can only be `Static` for the moment."
-  type        = string
-  default     = "Static"
-}
-
 # Application gateway inputs
 
 variable "appgw_name" {
