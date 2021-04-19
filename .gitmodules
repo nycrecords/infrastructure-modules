@@ -1,3 +1,0 @@
-[submodule "azurerm_app_gateway"]
-	path = terraform-azurerm-app-gateway
-	url = https://github.com/claranet/terraform-azurerm-app-gateway
