@@ -4,8 +4,6 @@ locals {
 
   appgw_name = var.appgw_name != "" ? var.appgw_name : join("-", [local.default_name, "appgw"])
 
-  subnet_name = var.custom_subnet_name != "" ? [var.custom_subnet_name] : [join("-", [local.default_name, "subnet"])]
-
   nsr_https_name       = coalesce(var.custom_nsr_https_name, join("-", [local.default_name, "https-nsr"]))
   nsr_healthcheck_name = coalesce(var.custom_nsr_healthcheck_name, join("-", [local.default_name, "appgw-healthcheck-nsr"]))
 
