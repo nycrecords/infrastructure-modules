@@ -8,16 +8,6 @@ output "appgw_name" {
   value       = local.appgw_name
 }
 
-output "appgw_subnet_id" {
-  description = "The ID of the subnet where the Application Gateway is attached."
-  value       = var.subnet_id
-}
-
-output "appgw_subnet_name" {
-  description = "The name of the subnet where the Application Gateway is attached."
-  value       = data.azurerm_subnet.subnet.name
-}
-
 output "appgw_nsg_id" {
   description = "The ID of the network security group from the subnet where the Application Gateway is attached."
   value       = data.azurerm_network_security_group.nsg.id
@@ -26,11 +16,6 @@ output "appgw_nsg_id" {
 output "appgw_nsg_name" {
   description = "The name of the network security group from the subnet where the Application Gateway is attached."
   value       = data.azurerm_network_security_group.nsg.name
-}
-
-output "appgw_public_ip_address" {
-  description = "The public IP address of Application Gateway."
-  value       = azurerm_public_ip.ip.ip_address
 }
 
 output "appgw_backend_address_pool_ids" {
