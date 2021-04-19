@@ -10,22 +10,22 @@ output "appgw_name" {
 
 output "appgw_subnet_id" {
   description = "The ID of the subnet where the Application Gateway is attached."
-  value       = var.create_subnet == true ? join("", module.azure-network-subnet.subnet_ids) : var.subnet_id
+  value       = var.subnet_id
 }
 
 output "appgw_subnet_name" {
   description = "The name of the subnet where the Application Gateway is attached."
-  value       = var.create_subnet == true ? join("", module.azure-network-subnet.subnet_names) : null
+  value       = data.azurerm_subnet.subnet.name
 }
 
 output "appgw_nsg_id" {
   description = "The ID of the network security group from the subnet where the Application Gateway is attached."
-  value       = module.azure-network-security-group.network_security_group_id
+  value       = data.azurerm_network_security_group.nsg.id
 }
 
 output "appgw_nsg_name" {
   description = "The name of the network security group from the subnet where the Application Gateway is attached."
-  value       = module.azure-network-security-group.network_security_group_name
+  value       = data.azurerm_network_security_group.nsg.name
 }
 
 output "appgw_public_ip_address" {
