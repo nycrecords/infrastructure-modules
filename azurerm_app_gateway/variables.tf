@@ -10,18 +10,8 @@ variable "location_short" {
   type        = string
 }
 
-variable "client_name" {
-  description = "Client name/account used in naming"
-  type        = string
-}
-
 variable "environment" {
   description = "Project environment"
-  type        = string
-}
-
-variable "stack" {
-  description = "Project stack name"
   type        = string
 }
 
@@ -351,10 +341,14 @@ variable "subnet_cidr" {
   default     = ""
 }
 
-variable "create_nsg" {
-  description = "Boolean to create the network security group."
-  type        = bool
-  default     = true
+variable "nsg_resource_group_name" {
+  description = "Network Security Group Resource group name"
+  type        = string
+}
+
+variable "nsg_name" {
+  description = "Network Security Group name"
+  type        = string
 }
 
 variable "create_nsg_https_rule" {
