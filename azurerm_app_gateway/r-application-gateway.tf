@@ -1,3 +1,9 @@
+date "azurerm_subnet" "subnet" {
+  name = var.subnet_name
+  virtual_network_name = var.virtual_network_name
+  resource_group_name = var.subnet_resource_group_name
+}
+
 resource "azurerm_application_gateway" "app_gateway" {
   location            = var.location
   resource_group_name = var.resource_group_name
@@ -17,19 +23,13 @@ resource "azurerm_application_gateway" "app_gateway" {
   zones = var.zones
 
   enable_http2 = var.enable_http2
-
-  frontend_ip_configuration {
-    name                 = local.frontend_ip_configuration_name
-    private_ip_address = var.private_ip_address
-  }
-
   dynamic "frontend_ip_configuration" {
     for_each = var.appgw_private ? ["fake"] : []
     content {
       name                          = local.frontend_priv_ip_configuration_name
       private_ip_address_allocation = var.appgw_private ? "Static" : null
       private_ip_address            = var.appgw_private ? var.appgw_private_ip : null
-      subnet_id                     = var.appgw_private ? var.subnet_id : null
+      subnet_id                     = var.appgw_private ? data.azurerm_subnet.subnet.id : null
     }
   }
 
@@ -43,7 +43,7 @@ resource "azurerm_application_gateway" "app_gateway" {
 
   gateway_ip_configuration {
     name      = local.gateway_ip_configuration_name
-    subnet_id = var.subnet_id
+    subnet_id = data.azurerm_subnet.subnet.id
   }
 
   #

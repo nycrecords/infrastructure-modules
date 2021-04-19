@@ -279,34 +279,21 @@ variable "subnet_resource_group_name" {
   default     = ""
 }
 
+variable "subnet_name" {
+  description = "Name of the subnet to use."
+  type        = string
+  default     = ""
+}
 variable "create_subnet" {
   description = "Boolean to create subnet with this module."
   type        = bool
   default     = true
 }
 
-variable "subnet_id" {
-  description = "Custom subnet ID for attaching the Application Gateway. Used only when the variable `create_subnet = false`."
-  type        = string
-  default     = ""
-}
-
 variable "route_table_ids" {
   description = "The Route Table Ids map to associate with the subnets. More informations about declaration on https://github.com/claranet/terraform-azurerm-subnet."
   type        = map(string)
   default     = {}
-}
-
-variable "custom_subnet_name" {
-  description = "Custom name for the subnet."
-  type        = string
-  default     = ""
-}
-
-variable "subnet_cidr" {
-  description = "Subnet CIDR to create."
-  type        = string
-  default     = ""
 }
 
 variable "nsg_resource_group_name" {
