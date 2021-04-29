@@ -2,6 +2,11 @@ data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
 
+data "azurerm_virtual_network" "vnet" {
+  name = var.vnet
+  resource_group_name = var.vnet_resource_group
+}
+
 data "azurerm_subnet" "subnet" {
   name                 = var.frontend_subnet_name
   virtual_network_name = var.vnet_name
@@ -65,4 +70,15 @@ resource "azurerm_lb_rule" "lb" {
   backend_address_pool_id        = azurerm_lb_backend_address_pool.lb.id
   idle_timeout_in_minutes        = 5
   probe_id                       = element(azurerm_lb_probe.lb.*.id, count.index)
+}
+
+
+resource "azurerm_lb_backend_address_pool_address" "backend_pool_address" {
+  for_each = var.backend_pool_address
+  dynamic "vm" {
+    name                    = vm.value["name"]
+    backend_address_pool_id = azurerm_lb_backend_address_pool.lb.id
+    virtual_network_id      = data.azurerm_virtual_network.vnet.id
+    ip_address              = vm.value["ip"]
+  }
 }
