@@ -3,7 +3,7 @@ data "azurerm_resource_group" "rg" {
 }
 
 data "azurerm_virtual_network" "vnet" {
-  name = var.vnet
+  name = var.vnet_name
   resource_group_name = var.vnet_resource_group
 }
 
@@ -74,11 +74,9 @@ resource "azurerm_lb_rule" "lb" {
 
 
 resource "azurerm_lb_backend_address_pool_address" "backend_pool_address" {
-  for_each = var.backend_pool_address
-  dynamic "vm" {
-    name                    = vm[0]
-    backend_address_pool_id = azurerm_lb_backend_address_pool.lb.id
-    virtual_network_id      = data.azurerm_virtual_network.vnet.id
-    ip_address              = vm[1]
-  }
+  count = length(var.backend_pool_address)
+  name                    = element(keys(var.backend_pool_address), count.index)
+  backend_address_pool_id = azurerm_lb_backend_address_pool.lb.id
+  virtual_network_id      = data.azurerm_virtual_network.vnet.id
+  ip_address              = element(var.backend_port[element(keys(var.backend_pool_address), count.index)], 1)
 }

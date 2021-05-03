@@ -99,7 +99,7 @@ variable "lb_probe" {
 }
 
 variable "backend_pool_address" {
-  description = "(Optional) IP Addresses to be added into the backend address pool for the load balancer. Format as [name, ip]"
+  description = "(Optional) IP Addresses to be added into the backend address pool for the load balancer. Format as [ip]"
   type = map(any)
   default = {}
 
