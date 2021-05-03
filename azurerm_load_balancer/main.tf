@@ -76,9 +76,9 @@ resource "azurerm_lb_rule" "lb" {
 resource "azurerm_lb_backend_address_pool_address" "backend_pool_address" {
   for_each = var.backend_pool_address
   dynamic "vm" {
-    name                    = vm.value["name"]
+    name                    = vm[0]
     backend_address_pool_id = azurerm_lb_backend_address_pool.lb.id
     virtual_network_id      = data.azurerm_virtual_network.vnet.id
-    ip_address              = vm.value["ip"]
+    ip_address              = vm[1]
   }
 }

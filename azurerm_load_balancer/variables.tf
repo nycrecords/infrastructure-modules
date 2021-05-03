@@ -104,4 +104,3 @@ variable "backend_pool_address" {
   default = {}
 
 }
-
