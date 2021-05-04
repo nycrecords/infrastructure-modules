@@ -4,9 +4,9 @@ data "azurerm_network_security_group" "nsg" {
 }
 
 resource "azurerm_network_security_rule" "rule" {
-  count = var.nsg_rules
+  count = length(var.nsg_rules)
 
-  name = element(key(var.nsg_rules))
+  name = element(key(var.nsg_rules), count.index)
 
   resource_group_name         = var.nsg_resource_group_name
   network_security_group_name = data.azurerm_network_security_group.nsg.name
