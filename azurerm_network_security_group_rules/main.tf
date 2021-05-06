@@ -11,7 +11,7 @@ resource "azurerm_network_security_rule" "rule" {
   resource_group_name         = var.nsg_resource_group_name
   network_security_group_name = data.azurerm_network_security_group.nsg.name
 
-  priority  = element(var.nsg_rules, count.index).prio` rity
+  priority  = element(var.nsg_rules, count.index).priority
   direction = element(var.nsg_rules, count.index).direction
   access    = element(var.nsg_rules, count.index).access
   protocol  = element(var.nsg_rules, count.index).protocol
