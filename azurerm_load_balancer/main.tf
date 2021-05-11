@@ -69,7 +69,7 @@ resource "azurerm_lb_rule" "lb" {
   enable_floating_ip             = false
   backend_address_pool_id        = azurerm_lb_backend_address_pool.lb.id
   idle_timeout_in_minutes        = 5
-  probe_id                       = element(azurerm_lb_probe.lb.*.id, count.index)
+  probe_id                       = element(azurerm_lb_probe.lb.*.id, element(var.lb_port[element(keys(var.lb_port), count.index)], 3))
 }
 
 
