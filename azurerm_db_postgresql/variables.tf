@@ -16,11 +16,6 @@ variable "location" {
   type        = string
 }
 
-variable "location_short" {
-  description = "Short string for Azure location."
-  type        = string
-}
-
 variable "name_prefix" {
   description = "Optional prefix for PostgreSQL server name"
   type        = string
