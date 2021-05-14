@@ -1,3 +1,6 @@
+data "azurerm_resource_group" "rg" {
+  name = var.resource_group_name
+}
 
 module "azure-region" {
   source = "github.com/nycrecords/infrastructure-modules.git?ref=add-azure-postgresql-module//terraform-azurerm-regions"
