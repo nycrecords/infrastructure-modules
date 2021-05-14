@@ -2,6 +2,9 @@
 module "azure-region" {
   source = "github.com/nycrecords/infrastructure-modules.git?ref=add-azure-postgresql-module//terraform-azurerm-regions"
 
+  azure_region = data.azurerm_resource_group.rg.location
+}
+
 locals {
   name_prefix  = var.name_prefix != "" ? replace(var.name_prefix, "/[a-z0-9]$/", "$0-") : ""
   default_name = lower("${local.name_prefix}${var.app}-${module.azure-region.location_short}-${var.environment}")
