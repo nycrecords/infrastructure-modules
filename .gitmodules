@@ -1,0 +1,3 @@
+[submodule "azurerm_azure_regions"]
+	path = terraform-azurerm-regions
+	url = https://github.com/claranet/terraform-azurerm-regions
