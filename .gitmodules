@@ -1,0 +1,24 @@
+[submodule "terraform-azurerm-db-mysql"]
+	path = terraform-azurerm-db-mysql
+	url = https://github.com/nycrecords/terraform-azurerm-db-mysql.git
+[submodule "terraform-azurerm-db-postgresql"]
+	path = terraform-azurerm-db-postgresql
+	url = https://github.com/nycrecords/terraform-azurerm-db-postgresql.git
+[submodule "terraform-azurerm-app-gateway.git"]
+	path = terraform-azurerm-app-gateway
+	url = https://github.com/nycrecords/terraform-azurerm-app-gateway.git
+[submodule "terraform-azurerm-keyvault.git"]
+	path = terraform-azurerm-keyvault
+	url = https://github.com/nycrecords/terraform-azurerm-keyvault.git
+[submodule "terraform-azurerm-lb.git"]
+	path = terraform-azurerm-lb
+	url = https://github.com/nycrecords/terraform-azurerm-lb.git
+[submodule "terraform-azurerm-regions.git"]
+	path = terraform-azurerm-regions
+	url = https://github.com/nycrecords/terraform-azurerm-regions.git
+[submodule "terraform-azurerm-storage-sas-token.git"]
+	path = terraform-azurerm-storage-sas-token
+	url = https://github.com/nycrecords/terraform-azurerm-storage-sas-token.git
+[submodule "terraform-azurerm-acr.git"]
+	path = terraform-azurerm-acr
+	url = https://github.com/nycrecords/terraform-azurerm-acr.git
