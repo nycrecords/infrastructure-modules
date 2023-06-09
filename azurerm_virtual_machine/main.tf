@@ -19,7 +19,7 @@ data "azurerm_subnet" "subnet" {
 }
 
 locals {
-  ssh_keys = concat([var.ssh_key], var.extra_ssh_keys)
+  ssh_keys = concat([var.ssh_key_file], var.extra_ssh_keys)
 }
 
 resource "random_id" "vm-sa" {
@@ -110,10 +110,10 @@ resource "azurerm_virtual_machine" "vm-linux" {
   }
 
   os_profile_linux_config {
-    disable_password_authentication = var.enable_ssh_key
+    disable_password_authentication = var.enable_ssh_key_file || var.enable_ssh_key_value
 
     dynamic "ssh_keys" {
-      for_each = var.enable_ssh_key ? local.ssh_keys : []
+      for_each = var.enable_ssh_key_file ? local.ssh_keys : []
       content {
         path     = "/home/${var.admin_username}/.ssh/authorized_keys"
         key_data = file(ssh_keys.value)
@@ -121,7 +121,7 @@ resource "azurerm_virtual_machine" "vm-linux" {
     }
 
     dynamic "ssh_keys" {
-      for_each = var.enable_ssh_key ? var.ssh_key_values : []
+      for_each = var.enable_ssh_key_value ? var.ssh_key_values : []
       content {
         path     = "/home/${var.admin_username}/.ssh/authorized_keys"
         key_data = ssh_keys.value
