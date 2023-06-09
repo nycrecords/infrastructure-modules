@@ -205,7 +205,7 @@ variable "enable_ssh_key_file" {
   default     = false
 }
 
-variable "enable_ssh_key_file" {
+variable "enable_ssh_key_value" {
   type        = bool
   description = "(Optional) Enable ssh key authentication in Linux virtual Machine."
   default     = false
