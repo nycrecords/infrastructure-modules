@@ -199,10 +199,16 @@ variable "enable_accelerated_networking" {
   default     = false
 }
 
-variable "enable_ssh_key" {
+variable "enable_ssh_key_file" {
   type        = bool
   description = "(Optional) Enable ssh key authentication in Linux virtual Machine."
-  default     = true
+  default     = false
+}
+
+variable "enable_ssh_key_file" {
+  type        = bool
+  description = "(Optional) Enable ssh key authentication in Linux virtual Machine."
+  default     = false
 }
 
 variable "nb_data_disk" {
